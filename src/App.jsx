@@ -22,23 +22,17 @@ function BoletosAseremPagos({ boletos }) {
 function BoletoInfo() {
   const location = useLocation();
   const nomeUsuario = location.state?.name || 'Usuário';
-  console.log(nomeUsuario)
 
-
-  const queryParams = new URLSearchParams(location.search);
- 
-  
   const [boletos, setBoletos] = useState(location.state?.boletos || []);
   const [contasHoje, setContasHoje] = useState([]);
   const [totalBoletos, setTotalBoletos] = useState(0);
   const [boletosPagos, setBoletosPagos] = useState(0);
   const [boletosNaoPagos, setBoletosNaoPagos] = useState(0);
-  
-  // Função para obter a data de hoje no formato dd/mm/yyyy
+
   const obterDataHoje = () => {
     const hoje = new Date();
     const dia = String(hoje.getDate()).padStart(2, '0');
-    const mes = String(hoje.getMonth() + 1).padStart(2, '0'); // Janeiro é 0!
+    const mes = String(hoje.getMonth() + 1).padStart(2, '0');
     const ano = hoje.getFullYear();
     return `${dia}/${mes}/${ano}`;
   };
@@ -48,8 +42,7 @@ function BoletoInfo() {
       .then(response => response.json())
       .then(data => {
         setBoletos(data);
-        
-        const hoje = obterDataHoje();  // Obter a data de hoje no formato correto
+        const hoje = obterDataHoje();
         const contasDoDia = data.filter(boleto => boleto['Vencimento'] === hoje);
         setContasHoje(contasDoDia);
 
@@ -85,11 +78,10 @@ function BoletoInfo() {
             <div className="table-wrapper">
               <table>
                 <thead>
-                  <tr>                    
+                  <tr>
                     <th>Nome</th>
                     <th>Vencimento</th>
                     <th>Valor do Documento</th>
-                    <th>Download</th>
                     <th>Status</th>
                   </tr>
                 </thead>
@@ -99,8 +91,13 @@ function BoletoInfo() {
                       <td>{boleto['Beneficiário']}</td>
                       <td>{boleto['Vencimento']}</td>
                       <td>{boleto['Valor do Documento']}</td>
-                      <td><a href={boleto.url} download>⬇️</a></td>
-                      <td>{boleto.status ? 'Pago' : 'Não pago'}</td>
+                      <td>
+                        <button
+                          className={boleto.status ? 'status-button pago' : 'status-button nao-pago'}
+                        >
+                          {boleto.status ? 'Pago' : 'Não pago'}
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -118,4 +115,4 @@ function BoletoInfo() {
   );
 }
 
-export default BoletoInfo;  
+export default BoletoInfo;

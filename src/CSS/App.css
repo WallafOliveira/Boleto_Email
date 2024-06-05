@@ -1,126 +1,132 @@
-/* app.css */
+/* Estilos globais */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
 
-/* Estilos para o contêiner principal */
+/* Estilos para o contêiner do aplicativo */
 .container {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  margin: 20px auto;
   padding: 20px;
-  max-width: 1200px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
 }
 
 /* Estilos para a seção esquerda */
 .left-section {
   flex: 2;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-right: 20px;
 }
 
-/* Estilos para a saudação */
 .left-section h1 {
   font-size: 28px;
   margin-bottom: 20px;
 }
 
-/* Estilos para o resumo */
-.resumo {
+.left-section .resumo {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.resumo .numero {
-  background-color: #e3e3e3;
-  padding: 10px;
-  border-radius: 5px;
+.left-section .resumo .numero {
+  flex: 1;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  margin: 0 10px;
 }
 
-.resumo .numero h2 {
-  margin: 0;
-  font-size: 20px;
-}
-
-.resumo .numero p {
+.left-section .resumo .numero h2 {
   font-size: 18px;
-  margin: 5px 0 0;
-}
-
-/* Estilos para a tabela de boletos */
-.tabela-boletos {
-  margin-top: 20px;
-}
-
-.tabela-boletos h2 {
-  font-size: 24px;
   margin-bottom: 10px;
 }
 
-.table-wrapper {
-  overflow-x: auto;
+.left-section .resumo .numero p {
+  font-size: 24px;
+  font-weight: bold;
 }
 
-table {
+.left-section .tabela-boletos {
+  margin-top: 20px;
+}
+
+.left-section .tabela-boletos h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.left-section .table-wrapper {
+  overflow-y: auto;
+  max-height: 400px; /* Altura máxima para a rolagem */
+}
+
+.left-section table {
   width: 100%;
   border-collapse: collapse;
 }
 
-table th, table td {
+.left-section table th, .left-section table td {
   padding: 10px;
-  text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
-table th {
-  background-color: #f2f2f2;
+.left-section table th {
+  background-color: #f8f8f8;
+  text-align: left;
+}
+
+.status-button {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.pago {
+  background-color: #28a745; /* Verde */
+}
+
+.nao-pago {
+  background-color: #dc3545; /* Vermelho */
 }
 
 /* Estilos para a seção direita */
 .right-section {
   flex: 1;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para os boletos a serem pagos */
-.contas-hoje {
-  background-color: #ffebcc;
-  padding: 10px;
+.right-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.contas-hoje .conta-hoje {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
   border-radius: 5px;
-}
-
-.contas-hoje h2 {
-  font-size: 22px;
+  padding: 10px;
   margin-bottom: 10px;
 }
 
-.conta-hoje {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 10px;
+.contas-hoje .conta-hoje .data {
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
-.conta-hoje .data {
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.conta-hoje .detalhes p {
-  margin: 0;
-  font-size: 16px;
-}
-
-/* Estilos para links de download */
-a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+.contas-hoje .conta-hoje .detalhes p {
+  margin: 5px 0;
 }
