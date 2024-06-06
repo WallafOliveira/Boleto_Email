@@ -32,7 +32,7 @@ function Email() {
   };
 
   return (
-    <div className="container">
+    <div className="containner">
       <h2>Login</h2>
       <form onSubmit={handleLogin}> 
         <div className="label-container">

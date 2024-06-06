@@ -54,6 +54,32 @@ function BoletoInfo() {
       .catch(error => console.error('Erro ao buscar informações do boleto:', error));
   }, []);
 
+  const handleStatusChange = (index) => {
+    const updatedBoletos = [...boletos];
+    updatedBoletos[index].status = !updatedBoletos[index].status;
+
+    // Atualiza o estado local
+    setBoletos(updatedBoletos);
+
+    // Envia a atualização para o backend
+    fetch(`http://127.0.0.1:5000/boleto/${updatedBoletos[index].id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ status: updatedBoletos[index].status }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          console.error('Erro ao atualizar o status do boleto:', data.error);
+        } else {
+          console.log('Status do boleto atualizado com sucesso:', data.message);
+        }
+      })
+      .catch(error => console.error('Erro ao enviar atualização para o backend:', error));
+  };
+
   return (
     <div className="container">
       <div className="left-section">
@@ -94,6 +120,7 @@ function BoletoInfo() {
                       <td>
                         <button
                           className={boleto.status ? 'status-button pago' : 'status-button nao-pago'}
+                          onClick={() => handleStatusChange(index)}
                         >
                           {boleto.status ? 'Pago' : 'Não pago'}
                         </button>
