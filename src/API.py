@@ -46,14 +46,31 @@ def fetch_boletos(username, password):
                                     for page in leitor_pdf.pages:
                                         texto += page.extract_text()
 
-                                    # Extração do Valor
-                                    valor = re.findall(r'R\$\s*[\d,.]+', texto)
-                                    padrao_data = r'\b\d{2}/\d{2}/\d{4}\b'
-                                    datas_encontradas = re.findall(padrao_data, texto)
-                                    datas_convertidas = [datetime.strptime(data, '%d/%m/%Y') for data in datas_encontradas]
+                                padrao_codigo_barra=re.compile(r"\d+\.\d+.+\d+\.\d+.+\d+\.\d+.+\d.+\d+")
+                                codigo_barra=re.finditer(padrao_codigo_barra,texto)
+                                for item in codigo_barra:
+                                    codigo_barra=item
+                                padrao_mais=re.compile(r'\(\+\)')
+                                mais=re.finditer(padrao_mais,texto)
+                                for item in mais:
+                                    mais=item
+                                if codigo_barra.start()>mais.end():
+                                    codigo_barra=re.search(padrao_codigo_barra,texto)
+                                subtexto=texto[codigo_barra.start():]
 
-                                    primeiro_valor = valor[0] if valor else 'Nenhum valor monetário encontrado.'
-                                    vencimento = max(datas_convertidas).strftime('%d/%m/%Y') if datas_convertidas else 'Nenhuma data encontrada.'
+                                padrao_valor=re.compile(r'.?\d.+,\d+')
+                                Valor = re.findall(padrao_valor, subtexto)
+
+                                primeiro_valor = Valor[0] if Valor else 'Nenhum valor monetário encontrado.'
+
+                                padrao_data = r'\d{2}/\d{2}/\d{4}'
+                                datas_encontradas = re.findall(padrao_data, subtexto)
+
+                                datas_convertidas = [datetime.strptime(data, '%d/%m/%Y') for data in datas_encontradas]
+                                vencimento = max(datas_convertidas).strftime('%d/%m/%Y') if datas_convertidas else 'Nenhuma data encontrada.'
+                                    
+                                padrao_beneficiario = re.compile(r'[bB][eE][nN][eE][fF][iI][cC][iI][aáAÁ][rR][iI][oO]')
+                                beneficiario_match = re.search(padrao_beneficiario, texto)
                                     
                                 padrao_beneficiario = re.compile(r'[bB][eE][nN][eE][fF][iI][cC][iI][aáAÁ][rR][iI][oO]')
                                 beneficiario_match = re.search(padrao_beneficiario, texto)
