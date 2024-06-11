@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import Email from './Email';
+import SaveUser from './components/SaveUser';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
@@ -12,7 +13,8 @@ root.render(
     <BrowserRouter>
       <Routes>
        <Route path="/">
-            <Route index  element={<Email/>} /> 
+            <Route index  element={<SaveUser/>} /> 
+            <Route path="Email" element={<Email/>} />
             <Route path="app" element={<App/>} />
        </Route>
       </Routes>

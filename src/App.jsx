@@ -83,7 +83,7 @@ function BoletoInfo() {
   return (
     <div className="container">
       <div className="left-section">
-        <h1>Olá, {nomeUsuario} 👋🏼</h1>
+        <h1>BANKSLY</h1>
         <div className="resumo">
           <div className="numero">
             <h2>Total de Boletos</h2>

@@ -1,86 +1,86 @@
-/* email.css */
+/* CSS/email.css */
 
-/* Estilos para o contêiner principal */
-.containner {
-  max-width: 50%;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+body {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f2f5;
 }
 
-/* Estilos para o título */
+.containr {
+  width: 40vw; /* Define a largura como 30% da tela */
+  height: 45vh;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  text-align: center;
+  box-sizing: border-box;
+}
+
 h2 {
-  font-size: 24px;
   margin-bottom: 20px;
+  color: #333;
+  font-size: 1.5em;
 }
 
-/* Estilos para os campos de entrada e rótulos */
 .label-container {
   position: relative;
   margin-bottom: 20px;
-  width: 100%;
 }
 
-input[type="text"],
-input[type="password"],
+.label-container input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+.label-container label {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  background-color: #ffffff;
+  padding: 0 5px;
+  font-size: 0.9em;
+  color: #666;
+  transition: all 0.2s ease-in-out;
+}
+
+.label-container input:focus + label,
+.label-container input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 10px;
+  background-color: #ffffff;
+  color: #007bff;
+  font-size: 0.8em;
+}
+
 button {
   width: 100%;
   padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 5px;
-  display: block; /* Garantir que os elementos sejam exibidos em uma linha */
-  margin-bottom: 1px; /* Adicionar espaço abaixo de cada componente */
-}
-
-/* Estilos para o rótulo dentro do contêiner de entrada */
-.label-container label {
-  position: absolute;
-  top: -10px;
-  left: 10px;
-  background-color: #f9f9f9;
-  padding: 0 5px;
-  font-size: 14px;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Estilos para mover o rótulo quando o campo de entrada está em foco ou tem conteúdo */
-.input-focus label,
-input:not(:placeholder-shown) + label {
-  transform: translate(0, -20px);
-  font-size: 12px;
-  padding-top: 7%;
- 
-}
-
-/* Estilos para o botão "Login" */
-button {
   background-color: #007bff;
-  color: white;
+  color: #fff;
+  font-size: 1em;
   cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
-/* Estilos para o botão "Continuar" */
-.btn_cont {
-  background-color: #28a745;
-  cursor: pointer;
-}
-
-/* Estilos para os botões quando hover */
-button:hover,
-.btn_cont:hover {
+button:hover {
   background-color: #0056b3;
 }
 
-/* Estilos para mensagens de erro */
-.error-message {
-  color: red;
-  font-size: 14px;
+.btn_cont {
   margin-top: 10px;
+  background-color: #6c757d;
+}
+
+.btn_cont:hover {
+  background-color: #5a6268;
 }
