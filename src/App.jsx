@@ -105,7 +105,7 @@ function BoletoInfo() {
               <table>
                 <thead>
                   <tr>
-                    <th>Nome</th>
+                    <th>Beneficiário</th>
                     <th>Vencimento</th>
                     <th>Valor do Documento</th>
                     <th>Status</th>
