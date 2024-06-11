@@ -10,7 +10,7 @@ function Email() {
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const text = queryParams.get('text') || 'Nenhum texto fornecido';
+  const text = queryParams.get('text') || 'Usuário';
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -43,6 +43,7 @@ function Email() {
           navigate('/app');
           
           // Exibir mensagem de sucesso
+          
           alert('Login bem-sucedido! Redirecionando para a aplicação...');
         } else {
           const errorData = await postResponse.json();
@@ -69,20 +70,18 @@ function Email() {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Username"
               required
             />
-            <label>Username:</label>
+            <label>Email:</label>
           </div>
           <div className="label-container">
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
               required
             />
-            <label>Password:</label>
+            <label>Senha:</label>
           </div>
           <button type="submit">Login</button>
           <button type="button" className="btn_cont" onClick={() => navigate('/app')}>

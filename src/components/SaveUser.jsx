@@ -34,12 +34,12 @@ function SaveUser() {
           Comece agora mesmo! Cadastre seus boletos ou envie os detalhes dos boletos que você deseja organizar. Estamos aqui para simplificar sua vida financeira.
         </p>
         <div className="form-container">
-          <p>Por favor, digite seu texto abaixo e clique em "Enviar" para continuar.</p>
+          <p>Por favor, digite seu nome abaixo e clique em "Enviar" para continuar.</p>
           <form onSubmit={handleSubmit}>
             <textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
-              placeholder="Digite seu texto aqui..."
+              placeholder="Digite seu nome aqui..."
             />
             <button type="submit">Enviar</button>
           </form>
