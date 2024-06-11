@@ -44,7 +44,7 @@ function Email() {
           
           // Exibir mensagem de sucesso
           
-          alert('Login bem-sucedido! Redirecionando para a aplicação...');
+          ;
         } else {
           const errorData = await postResponse.json();
           console.error('Falha na requisição POST', errorData);
@@ -52,11 +52,11 @@ function Email() {
         }
       } else {
         console.error('Falha na requisição OPTIONS');
-        alert('Requisição OPTIONS falhou.');
+        ;
       }
     } catch (error) {
       console.error('Erro durante a requisição:', error);
-      alert('Erro ao tentar efetuar login. Tente novamente mais tarde.');
+      ;
     }
   };
 
